@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/pages/userCreation.xhtml">
+
+
+	<h:head>
+		<title>Edit Enjeux</title>
+	</h:head>
+	<ui:define name="title">
+           page Enjeux
+        </ui:define>
+
+	<ui:define name="form">
+
+		<h:form id="form">
+			<script type="text/javascript"
+				src="../assets-minified/widgets/interactions-ui/resizable.js"></script>
+			<script type="text/javascript"
+				src="../assets-minified/widgets/interactions-ui/draggable.js"></script>
+			<script type="text/javascript"
+				src="../assets-minified/widgets/interactions-ui/sortable.js"></script>
+			<script type="text/javascript"
+				src="../assets-minified/widgets/interactions-ui/selectable.js"></script>
+			<link rel="stylesheet" type="text/css"
+				href="../assets-minified/widgets/dialog/dialog.css" />
+			<script type="text/javascript"
+				src="../assets-minified/widgets/dialog/dialog.js"></script>
+			<script type="text/javascript"
+				src="../assets-minified/widgets/dialog/dialog-demo.js"></script>
+			<link rel="stylesheet" type="text/css"
+		href="../assets-minified/frontend-elements/frontend-elements-all.css"/>
+		
+			<p:growl id="msgs" showDetail="true" />
+			
+				
+				
+				
+				
+				<h:outputText value="enjeux LIbele" />
+					<p:inputText value="#{athProjB.libEnjeux}" />
+					<p:commandButton action="#{athProjB.doCreateEnjeux()}"
+						value="Create " update="cars1" />
+						<br></br>
+						<p:dataTable id="cars1" var="car" value="#{dtEditView.cars1}"
+						editable="true" style="margin-bottom:20px"
+						
+						widgetVar="carsTable">
+						<f:facet name="header">
+          Enjeux
+       </f:facet>
+
+						<p:ajax event="rowEdit" listener="#{dtEditView.onRowEdit}"
+							update=":form:msgs" />
+						<p:ajax event="rowEditCancel" listener="#{dtEditView.onRowCancel}"
+							update=":form:msgs" />
+
+						<p:column headerText="Id">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{car.id}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{car.id}"
+										style="width:100%" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column headerText="Libele">
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{car.libélé}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{car.libélé}" style="width:100%"
+										label="Libele" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+
+
+						<p:column style="width:32px">
+							<p:rowEditor />
+						</p:column>
+						<p:column style="width:32px;text-align: center">
+						 
+						     <p:commandButton   action="#{dtEditView.deleteEnjeux(car)}" icon="icon-clock-os" title="delete">
+              
+            </p:commandButton>
+        </p:column>
+    
+						
+					</p:dataTable>
+ 
+			
+				
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

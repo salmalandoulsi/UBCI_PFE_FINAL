@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/pages/Temp2.xhtml">
+
+
+	<h:head>
+		<title>Edit Enjeux</title>
+	</h:head>
+	<ui:define name="title">
+           page Enjeux
+        </ui:define>
+
+	<ui:define name="form">
+
+		<h:form id="form">
+			<p:growl id="msgs" showDetail="true"/>
+
+
+ <div class="x_content">
+
+                <!-- modals -->
+                <!-- Large modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                      </div>
+                      <div class="modal-body">
+                        <h4>Text in a modal</h4>
+                          <p:dataTable  var="car"
+					value="#{projetBean.prestataireBeans}"
+					selection="#{projetBean.selectedPrestataires1}" rowKey="#{car.p.id}"
+					style="margin-bottom:0"
+					editable="true" editMode="cell" widgetVar="cellCars">
+					<f:facet name="header">
+          Prestataire
+        </f:facet>
+         <p:ajax event="cellEdit" listener="#{dtEditView.onCellEdit}" update=":form:msgs" />
+				
+        <p:column selectionMode="multiple"
+						styleClass="width:20px;text-align:left" />
+					
+       <p:column headerText="libélé">
+						<h:outputText value="#{car.p.nom}" />
+					</p:column>
+					<p:column headerText="Référence">
+					<p:cellEditor>
+                  <f:facet name="output"><h:outputText value="#{car.référence}" /></f:facet>
+                  <f:facet name="input"><p:inputText id="modelInput" value="#{car.référence}" style="width:96%"/></f:facet>
+              </p:cellEditor>
+              	</p:column>	
+				</p:dataTable>
+                        </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Small modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+
+                <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel2">Modal title</h4>
+                      </div>
+                      <div class="modal-body">
+                      
+                        </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <!-- /modals -->
+              </div>
+            
+
+			<h1></h1>
+			<button type="button" id="btnLaunch" class="btn btn-primary">Launch
+				Modal</button>
+
+
+			<div class="modal fade" id="myModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">×</span><span class="sr-only">Close</span>
+							</button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							  <p:dataTable  var="car"
+					value="#{projetBean.prestataireBeans}"
+					selection="#{projetBean.selectedPrestataires1}" rowKey="#{car.p.id}"
+					style="margin-bottom:0"
+					editable="true" editMode="cell" widgetVar="cellCars">
+					<f:facet name="header">
+          Prestataire
+        </f:facet>
+         <p:ajax event="cellEdit" listener="#{dtEditView.onCellEdit}" update=":form:msgs" />
+				
+        <p:column selectionMode="multiple"
+						styleClass="width:20px;text-align:left" />
+					
+       <p:column headerText="libélé">
+						<h:outputText value="#{car.p.nom}" />
+					</p:column>
+					<p:column headerText="Référence">
+					<p:cellEditor>
+                  <f:facet name="output"><h:outputText value="#{car.référence}" /></f:facet>
+                  <f:facet name="input"><p:inputText id="modelInput" value="#{car.référence}" style="width:96%"/></f:facet>
+              </p:cellEditor>
+              	</p:column>	
+				</p:dataTable>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+							<button type="button" id="btnSave" class="btn btn-primary">Save
+								changes</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<script type="text/javascript">
+ $(function() {
+  $('#btnLaunch').click(function() {
+    $('#myModal').modal('show');
+  });
+
+  $('#btnSave').click(function() {
+    var value = $('input').val();
+    $('h1').html(value);
+    $('#myModal').modal('hide');
+  });
+}); 
+</script>
+
+
+
+
+		
+
+			<p:growl id="msg" showDetail="true" />
+
+
+
+
+
+		
+
+
+		</h:form>
+		<script src="js/bootstrap.min.js"></script>
+
+  <!-- bootstrap progress js -->
+  <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
+  <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
+  
+  <!-- pace -->
+  <script src="js/pace/pace.min.js"></script>
+  <!-- PNotify -->
+  <script type="text/javascript" src="js/notify/pnotify.core.js"></script>
+  <script type="text/javascript" src="js/notify/pnotify.buttons.js"></script>
+  <script type="text/javascript" src="js/notify/pnotify.nonblock.js"></script>
+  
+	</ui:define>
+</ui:composition>

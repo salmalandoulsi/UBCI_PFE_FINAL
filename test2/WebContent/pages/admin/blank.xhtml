@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui" >
+	<h:head>
+		<title>Default title</title>
+	</h:head>
+	<h:body>
+	<h:form id="form">
+			<h:panelGrid columns="2">
+
+				<h:outputLabel value="Date réceptionDA : * " />
+
+				<p:calendar id="mask" value="#{projetBean.p.d_réceptionDA}"
+					pattern="dd-MM-yyyy" mask="true" required="true" />
+
+
+				<h:outputLabel for="enjeux" value="enjeux : * " />
+				<h:selectOneMenu id="enjeux" value="#{projetBean.e}" effect="fold">
+					<f:selectItem itemLabel="Select enjeux" itemValue="" />
+					<f:selectItems value="#{projetBean.enjeuxSelect}" />
+				</h:selectOneMenu>
+
+				<h:outputText value="libélé Project" />
+				<h:inputText value="#{projetBean.libélé}" />
+
+
+
+				<h:outputLabel for="MOA" value="Chef de Projet MOA : * " />
+				<h:selectOneMenu id="MOA" value="#{projetBean.p.chef_MOA}"
+					effect="fold">
+					<f:selectItem itemLabel="Select MOA" itemValue="" />
+					<f:selectItems value="#{projetBean.usersSelect}" />
+				</h:selectOneMenu>
+
+
+				<h:outputLabel for="priorité" value="priorité : * " />
+				<h:selectOneMenu id="priorité" value="#{projetBean.p.priorité}"
+					effect="fold">
+					<f:selectItem itemLabel="Select priorité" itemValue="" />
+					<f:selectItems value="#{projetBean.prioritéSelect}" />
+				</h:selectOneMenu>
+
+				<h:outputLabel for="statut" value="statut : * " />
+				<h:selectOneMenu id="statut" value="#{projetBean.p.statut}"
+					effect="fold">
+					<f:selectItem itemLabel="Select statut" itemValue="" />
+					<f:selectItems value="#{projetBean.statutSelect}" />
+				</h:selectOneMenu>
+				<h:outputLabel for="reliquat" value="reliquat : * " />
+				<h:selectOneMenu id="reliquat" value="#{projetBean.p.reliquat}"
+					effect="fold">
+					<f:selectItem itemLabel="Select reliquat" itemValue="" />
+					<f:selectItems value="#{projetBean.reliquatSelect}" />
+				</h:selectOneMenu>
+			</h:panelGrid>
+			<p:commandButton action="#{projetBean.doCreateProject()}"
+				value="Create " />
+
+			<p:commandButton value="Submit" update="display"
+				oncomplete="PF('dlg').show()" icon="ui-icon-check" />
+
+			<p:dialog header="Values" modal="true" showEffect="bounce"
+				widgetVar="dlg" resizable="false">
+				<p:panelGrid columns="2" id="display" columnClasses="label,value">
+					<h:outputText value="enjeux" />
+					<h:outputText value="#{projetBean.e}" />
+					<h:outputText value="libélé" />
+					<h:outputText value="#{projetBean.libélé}" />
+					<h:outputText value="date" />
+					<h:outputText value="#{projetBean.d_étude}" />
+					<h:outputText value="priorité" />
+					<h:outputText value="#{projetBean.priorité}" />
+					<h:outputText value="user" />
+					<h:outputText value="#{projetBean.user}" />
+				</p:panelGrid>
+			</p:dialog>
+
+		</h:form>
+	
+		
+	</h:body>
+</html>

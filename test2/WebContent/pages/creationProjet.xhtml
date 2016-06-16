@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/pages/Temp2.xhtml">
+
+
+	<h:head>
+
+
+		<ui:define name="title">creation Demande</ui:define>
+
+		<link rel="stylesheet"
+			href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
+
+	</h:head>
+	<ui:define name="title2">
+          creation Demande        </ui:define>
+
+
+	<ui:define name="form">
+
+
+		<h:form id="form" class="form-horizontal" role="form">
+		<p:growl id="msgs" showDetail="true"/>
+<p:dataTable  var="car"
+					value="#{projetBean.prestataireBeans}"
+					selection="#{projetBean.selectedPrestataires1}" rowKey="#{car.p.id}"
+					style="margin-bottom:0"
+					editable="true" editMode="cell" widgetVar="cellCars">
+					<f:facet name="header">
+          Prestataire
+        </f:facet>
+        
+					
+					
+
+					
+				</p:dataTable>
+
+ <div class="x_content">
+
+                <!-- modals -->
+                <!-- Large modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                      </div>
+                      <div class="modal-body">
+                        <h4>Text in a modal</h4>
+                        <p:dataTable  var="car"
+					value="#{projetBean.prestataireBeans}"
+					selection="#{projetBean.selectedPrestataires1}" rowKey="#{car.p.id}"
+					style="margin-bottom:0"
+					editable="true" editMode="cell" widgetVar="cellCars">
+					<f:facet name="header">
+          Prestataire
+        </f:facet>
+         <p:ajax event="cellEdit" listener="#{dtEditView.onCellEdit}" update=":form:msgs" />
+				
+        <p:column selectionMode="multiple"
+						styleClass="width:20px;text-align:left" />
+					
+       <p:column headerText="libélé">
+						<h:outputText value="#{car.p.nom}" />
+					</p:column>
+					<p:column headerText="Référence">
+					<p:cellEditor>
+                  <f:facet name="output"><h:outputText value="#{car.référence}" /></f:facet>
+                  <f:facet name="input"><p:inputText id="modelInput" value="#{car.référence}" style="width:96%"/></f:facet>
+              </p:cellEditor>
+              	</p:column>	
+				</p:dataTable>
+                         </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+               
+                <!-- /modals -->
+              </div>
+         
+
+
+			<div class="ui-grid ui-grid-responsive">
+				<div class="ui-grid-row">
+					<div class="ui-grid-col-4">
+						<label class="col-sm-5 control-label">Référence DA </label> <label
+							class="col-sm-2 control-label">#{projetBean.incrémentID()}</label>
+					</div>
+					<div class="ui-grid-col-6">
+						<label for="ref2" class="col-sm-4 control-label">Référence
+							DAC </label>
+						<div class="col-sm-6">
+							<div class="input-group">
+								<span class="input-group-addon addon-inside bg-white font-green"><i
+									class="glyph-icon icon-tag"></i></span>
+								<p:inputText id="ref2" styleClass="form-control "
+									value="#{projetBean.libélé}" placeholder="Référence DAC">
+								</p:inputText>
+
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+
+				<div class="ui-grid ui-grid-responsive">
+					<div class="ui-grid-row"></div>
+				</div>
+			</div>
+
+
+
+
+
+			<br></br>
+			<br></br>
+			<br></br>
+
+			<div class="row">
+				<div class="col-md-4">
+					<div class="input-group">
+						<label for="nom" class="col-sm-4 control-label">Date
+							Réception</label>
+						<div class="col-sm-5">
+							<div class="input-group">
+								<span class="add-on input-group-addon"><i
+									class="glyph-icon icon-calendar"></i></span> <input type="text"
+									style="width: 100px" class="bootstrap-datepicker form-control"
+									id="" value="#{projetBean.d_receptionDA}"
+									data-date-format="mm/dd/yy"></input>
+							</div>
+						</div>
+
+
+					</div>
+					<div class="input-group">
+						<label for="nom" class="col-sm-4 control-label">libélé
+							Projet</label>
+						<div class="col-sm-7">
+							<div class="input-group">
+								<span class="input-group-addon addon-inside bg-white font-green"><i
+									class="glyph-icon icon-tag"></i></span>
+								<p:inputText styleClass="form-control" id="libele"
+									value="#{projetBean.libélé}" placeholder="nom Projet">
+								</p:inputText>
+
+							</div>
+						</div>
+						<br></br> <br></br>
+
+					</div>
+
+					<div class="input-group">
+
+						<label for="chefProjet" class="col-sm-4 control-label">Chef
+							de projet </label>
+						<div class="col-sm-7">
+
+							<h:selectOneMenu value="#{projetBean.loginChef}" effect="fold"
+								styleClass="custom-select  selector">
+								<f:selectItem itemLabel="Select " itemValue="" />
+								<f:selectItems value="#{projetBean.usersSelect}" />
+							</h:selectOneMenu>
+						</div>
+
+
+					</div>
+					<div>
+
+						<label for="DA" class="col-sm-4 control-label">Type DA </label>
+
+						<div class="col-sm-7">
+							<h:selectOneMenu position=" relative" value="#{projetBean.en5}"
+								effect="fold" styleClass="custom-select  selector">
+								<f:selectItem itemLabel="Select Type" itemValue="" />
+								<f:selectItems value="#{projetBean.typeDASelect}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+					<div class="input-group">
+						<label for="entité" class="col-sm-4 control-label"> Entité
+						</label>
+						<div class="col-sm-7">
+
+							<h:selectOneMenu value="#{projetBean.entité}" effect="fold"
+								styleClass="custom-select  selector">
+								<f:selectItem itemLabel="Select enitié" itemValue="" />
+								<f:selectItems value="#{projetBean.entiteSelect}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-4">
+					<div class="input-group">
+						<label for="nom" class="col-sm-4 control-label">Date
+							Cloture</label>
+						<div class="col-sm-5">
+							<div class="input-group">
+								<span class="add-on input-group-addon"><i
+									class="glyph-icon icon-calendar"></i></span> <input type="text"
+									style="width: 100px" class="bootstrap-datepicker form-control"
+									id="" value="#{projetBean.d_cloture}"
+									data-date-format="mm/dd/yy"></input>
+							</div>
+						</div>
+
+
+					</div>
+					<div class="input-group">
+						
+							<label for="nom" class="col-sm-4 control-label">Prestataire</label>
+							<div class="col-sm-3">
+								<p:commandButton id="prestataireBTN" value="choisir"
+									type="button" />
+							</div>
+					
+					</div>
+					<br></br>
+					<div class="input-group">
+						<label for="user2" class="col-sm-4 control-label">Chef de
+							projet MOA </label>
+						<div class="col-sm-7 ">
+
+							<h:selectOneMenu value="#{projetBean.loginMOA}" effect="fold"
+								styleClass="custom-select  selector">
+								<f:selectItem itemLabel="Select MOA" itemValue="" />
+								<f:selectItems value="#{projetBean.usersSelect}" />
+							</h:selectOneMenu>
+						</div>
+
+					</div>
+
+					<div class="input-group">
+						<label for="sponsor" class="col-sm-4 control-label">Sponsor
+						</label>
+						<div class="col-sm-7 ">
+
+							<h:selectOneMenu value="#{projetBean.loginSponsor}" effect="fold"
+								styleClass="custom-select  selector">
+								<f:selectItem itemLabel="Select Sponsor" itemValue="" />
+								<f:selectItems value="#{projetBean.usersSelect}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+					<div class="input-group">
+						<label for="application" class="col-sm-4 control-label">Application
+						</label>
+						<div class="col-sm-7 ">
+
+							<h:selectOneMenu value="#{projetBean.app}" effect="fold"
+								styleClass="custom-select  selector">
+								<f:selectItem itemLabel="Select user" itemValue="" />
+								<f:selectItems value="#{projetBean.applicationSelect}" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-4">
+					<div class="input-group">
+						<label for="Description" class="col-sm-4 control-label">Description
+						</label>
+						<p:inputTextarea value="#{projetBean.descriptionProjet}">
+						</p:inputTextarea>
+					</div>
+
+
+				</div>
+			</div>
+
+			<p:overlayPanel id="prestPanel" for="prestataireBTN"
+				hideEffect="fade" dynamic="true" style="width:300px">
+
+
+
+				<p:dataTable id="checkboxDT1" var="car"
+					value="#{projetBean.prestataires}"
+					selection="#{projetBean.selectedPrestataires}" rowKey="#{car.id}"
+					style="margin-bottom:0">
+					<f:facet name="header">
+            Checkbox
+        </f:facet>
+					<p:column selectionMode="multiple"
+						styleClass="width:20px;text-align:left" />
+					<p:column headerText="Id">
+						<h:outputText value="#{car.id}" />
+					</p:column>
+					<p:column headerText="libélé">
+						<h:outputText value="#{car.nom}" />
+					</p:column>
+					<p:column headerText="adresse">
+						<h:outputText value="#{car.adresse}" />
+					</p:column>
+
+					<f:facet name="footer">
+						<p:commandButton process="checkboxDT1"
+							update=":form:multiCarDetail1" icon="ui-icon-search" value="View"
+							oncomplete="PF('multiCarDialog').show()" />
+					</f:facet>
+				</p:dataTable>
+
+			</p:overlayPanel>
+
+			<p:dialog header="Selected prestataires" widgetVar="multiCarDialog"
+				modal="true" showEffect="fade" hideEffect="fade" resizable="false"
+				width="200">
+				<p:outputPanel id="multiCarDetail1" style="text-align:center;">
+					<ui:repeat value="#{prestBean.selectedPrestataires}" var="car">
+						<h:outputText value="#{car.id} - #{car.nom}" style="display:block" />
+					</ui:repeat>
+				</p:outputPanel>
+			</p:dialog>
+			<br></br>
+
+
+
+			<p:dialog header="Values" modal="true" showEffect="bounce"
+				widgetVar="dlg" resizable="false">
+				<p:panelGrid columns="2" id="display" columnClasses="label,value">
+					<h:outputText value="Enjeu:" />
+					<h:outputText value="#{projetBean.en}" />
+					<h:outputText value="Priorite:" />
+					<h:outputText value="#{projetBean.en2}" />
+					<h:outputText value="Reliquat:" />
+					<h:outputText value="#{projetBean.en3}" />
+					<h:outputText value="Statut: " />
+					<h:outputText value="#{projetBean.en4}" />
+					<h:outputText value="Type DA:" />
+					<h:outputText value="#{projetBean.en5}" />
+				</p:panelGrid>
+
+			</p:dialog>
+
+			<link rel="stylesheet" type="text/css"
+				href="../assets-minified/widgets/tabs-ui/tabs.css" />
+			<script type="text/javascript"
+				src="../assets-minified/widgets/tabs-ui/tabs.js"></script>
+			<script type="text/javascript">/* jQuery UI Tabs */
+
+    $(function() {
+        $(".tabs").tabs();
+    });</script>
+
+			<br></br>
+			<br></br>
+			<br></br>
+
+
+			<ul id="myTab" class="nav clearfix nav-tabs">
+				<li class="active"><a href="#home" data-toggle="tab">Etat
+						du projet</a></li>
+				<li class="dropdown"><a href="#" id="myTabDrop1"
+					class="dropdown-toggle" data-toggle="dropdown">Planning <b
+						class="caret"></b></a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+						<li><a href="#dropdown1" tabindex="-1" data-toggle="tab">Submenu
+								link 1</a></li>
+						<li class=""><a href="#dropdown2" tabindex="-1"
+							data-toggle="tab">Submenu link 2</a></li>
+					</ul></li>
+				<li class=""><a href="#planning" data-toggle="tab">Planning</a></li>
+				<li class=""><a href="#budget" data-toggle="tab">Budget</a></li>
+				<li class=""><a href="#facture" data-toggle="tab">Suivie
+						Facture</a></li>
+				<li class=""><a href="#moa" data-toggle="tab">Charge MOA</a></li>
+
+			</ul>
+			<div id="myTabContent" class="tab-content">
+
+
+
+				<div class="tab-pane fade" id="dropdown1">
+				
+					<div class="row">
+						<div class="col-md-6">
+
+						
+							<div class="input-group">
+								<br></br> <label class="col-sm-6 control-label"> Date
+									début étude MOA </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="d_étude1" styleClass="form-control col-sm-1 "
+												style="with:6xp;" value="#{projetBean.d_étude}"
+												pattern="dd-MM-yyyy" mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							
+							
+						</div>
+
+						<!-- 	partie 2************************************-->
+
+
+						<div class="col-md-6">
+
+							
+
+							<div class="input-group">
+								<br></br> <label for="user2" class="col-sm-6 control-label">
+									Date début étude MOA Réelle</label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="d_étude_R1" mode="popup"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.d_étude_R}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date fin étude MOA Réelle</label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+<p:outputLabel  value="Popup:" styleClass="with:5px;" style="position: responsive  !important" />
+        <p:calendar id="popup1" value="#{projetBean.d_étude_R}" />
+										
+
+
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				
+				</div>
+				<div class="tab-pane fade" id="dropdown2"></div>
+				<div class="tab-pane fade" id="budget">
+
+					<br></br> <br></br>
+					<div class="row">
+						<div class="col-md-4">
+
+
+							<div class="input-group">
+
+								<label for="priorité" class="col-sm-4 control-label">budget
+									Initial </label>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<span
+											class="input-group-addon addon-inside bg-white font-green"><i
+											class="glyph-icon icon-tag"></i></span>
+										<p:inputText id="budget_ini" styleClass="form-control "
+											value="#{projetBean.budget_int}" placeholder="Référence DAC">
+										</p:inputText>
+
+
+									</div>
+								</div>
+
+
+							</div>
+							<div class="input-group">
+								<label for="statut" class="col-sm-4 control-label">budget
+									suplémentaire </label>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<span
+											class="input-group-addon addon-inside bg-white font-green"><i
+											class="glyph-icon icon-tag"></i></span>
+										<p:inputText id="budget_sup" styleClass="form-control "
+											value="#{projetBean.budget_supp}"
+											placeholder="budget supplémentaire">
+										</p:inputText>
+
+
+									</div>
+								</div>
+							</div>
+							<div class="input-group">
+								<label for="useenjeuxr2" class="col-sm-4 control-label">Budget
+									Révisé </label>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<span
+											class="input-group-addon addon-inside bg-white font-green"><i
+											class="glyph-icon icon-tag"></i></span>
+										<p:inputText id="budget_rev" styleClass="form-control "
+											value="#{projetBean.budget_rev}" placeholder="Référence DAC">
+										</p:inputText>
+
+
+									</div>
+								</div>
+
+							</div>
+
+
+						</div>
+						<div class="col-md-4">
+
+							<div class="input-group">
+								<label for="useenjeuxr2" class="col-sm-6 control-label">Charge
+									Prévisonnelle </label>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<span
+											class="input-group-addon addon-inside bg-white font-green"><i
+											class="glyph-icon icon-tag"></i></span>
+										<p:inputText id="charge_Prev" styleClass="form-control "
+											value="#{projetBean.charge_prev}"
+											placeholder="charge prévisonnelle">
+										</p:inputText>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+								<label for="useenjeuxr2" class="col-sm-6 control-label">Charge
+									supplémentaire </label>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<span
+											class="input-group-addon addon-inside bg-white font-green"><i
+											class="glyph-icon icon-tag"></i></span>
+										<p:inputText id="chage_sup" styleClass="form-control "
+											value="#{projetBean.charge_supp}"
+											placeholder="charge supplémentaire">
+										</p:inputText>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+								<label for="useenjeuxr2" class="col-sm-6 control-label">
+									CHarge TOTAL </label>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<span
+											class="input-group-addon addon-inside bg-white font-green"><i
+											class="glyph-icon icon-tag"></i></span>
+										<p:inputText id="charge_total" styleClass="form-control "
+											value="#{projetBean.charge_Total}"
+											placeholder="charge Total ">
+										</p:inputText>
+
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-4">
+
+							<div class="input-group">
+								<label class="col-sm-6 control-label">Marcro CHiffrage </label>
+								<div class="col-sm-6">
+									<div class="input-group">
+										<span
+											class="input-group-addon addon-inside bg-white font-green"><i
+											class="glyph-icon icon-tag"></i></span>
+										<p:inputText id="macro_chiff" styleClass="form-control "
+											value="#{projetBean.macrochiffrage}"
+											placeholder="maccro Chiffrage">
+										</p:inputText>
+
+
+									</div>
+								</div>
+
+							</div>
+
+
+						</div>
+					</div>
+
+
+
+				</div>
+				<div class="tab-pane fade active in" id="home">
+
+					<br></br> <br></br>
+					<div class="row">
+						<div class="col-md-4">
+
+
+							<div class="input-group">
+
+								<label class="col-sm-4 control-label">Priorité </label>
+								<div class="col-sm-7">
+
+									<h:selectOneMenu value="#{projetBean.en2}" effect="fold"
+										styleClass="custom-select  selector">
+										<f:selectItem itemLabel="Select priorité" itemValue="" />
+										<f:selectItems value="#{projetBean.prioritéSelect}" />
+									</h:selectOneMenu>
+
+								</div>
+
+
+							</div>
+							<div class="input-group">
+								<label class="col-sm-4 control-label">Statut </label>
+								<div class="col-sm-7">
+
+									<h:selectOneMenu value="#{projetBean.en4}" effect="fold"
+										styleClass="custom-select  selector">
+										<f:selectItem itemLabel="Select statut" itemValue="" />
+										<f:selectItems value="#{projetBean.statutSelect}" />
+									</h:selectOneMenu>
+
+								</div>
+							</div>
+
+							<div class="input-group"></div>
+						</div>
+						<div class="col-md-4">
+
+							<div class="input-group">
+								<label class="col-sm-4 control-label">Enjeux </label>
+
+
+								<div class="col-sm-7 ">
+
+									<h:selectOneMenu value="#{projetBean.en}" effect="fold"
+										styleClass="custom-select  selector">
+										<f:selectItem itemLabel="Select enjeux" itemValue="" />
+										<f:selectItems value="#{projetBean.enjeuxSelect}" />
+									</h:selectOneMenu>
+								</div>
+
+
+							</div>
+
+							<div class="input-group">
+								<label class="col-sm-4 control-label">Reliquat </label>
+								<div class="col-sm-7">
+
+									<h:selectOneMenu value="#{projetBean.en3}" effect="fold"
+										styleClass="custom-select  selector">
+										<f:selectItem itemLabel="Select reliquat" itemValue="" />
+										<f:selectItems value="#{projetBean.reliquatSelect}" />
+									</h:selectOneMenu>
+
+								</div>
+							</div>
+
+
+						</div>
+						<div class="col-md-4">
+							<div class="input-group">
+								<label class="col-sm-4 control-label">Lancer Métier </label>
+								<div class="col-sm-7">
+
+									<h:selectOneMenu value="#{projetBean.lancerMetier}"
+										styleClass="custom-select  selector">
+										<f:selectItem itemLabel="Select One" itemValue="" />
+										<f:selectItem itemLabel="O" itemValue="O" />
+										<f:selectItem itemLabel="N" itemValue="N" />
+									</h:selectOneMenu>
+
+								</div>
+
+							</div>
+							<div class="input-group">
+								<label class="col-sm-4 control-label">Local/Central </label>
+								<div class="col-sm-7">
+
+									<h:selectOneMenu value="#{projetBean.lc}"
+										styleClass="custom-select  selector">
+										<f:selectItem itemLabel="Select One" itemValue="" />
+										<f:selectItem itemLabel="local" itemValue="local" />
+										<f:selectItem itemLabel="central" itemValue="central" />
+									</h:selectOneMenu>
+								</div>
+
+							</div>
+
+
+						</div>
+					</div>
+
+				</div>
+				<link rel="stylesheet" type="text/css"
+					href="../assets-minified/widgets/datepicker/datepicker.css" />
+				<script type="text/javascript"
+					src="../assets-minified/widgets/datepicker/datepicker.js"></script>
+				<script type="text/javascript">/* Datepicker bootstrap */
+
+    $(function() {
+        $('.bootstrap-datepicker').bsdatepicker({
+            format: 'mm-dd-yyyy'
+        });
+    });</script>
+				
+				<script type="text/javascript"
+					src="../assets-minified/widgets/daterangepicker/moment.js"></script>
+				<script type="text/javascript"
+					src="../assets-minified/widgets/daterangepicker/daterangepicker.js"></script>
+				<script type="text/javascript"
+					src="../assets-minified/widgets/daterangepicker/daterangepicker-demo.js"></script>
+
+				<div class="tab-pane fade" id="planning">
+					<br></br> <br></br>
+					<div class="row">
+						<div class="col-md-6">
+
+							<div class="input-group">
+
+
+								<label class="col-sm-6 control-label"> Dates
+									Prévisionnelles</label>
+							</div>
+
+							<div class="input-group">
+								<br></br> <label class="col-sm-6 control-label"> Date
+									début étude MOA </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="d_étude" styleClass="form-control col-sm-1 "
+												style="with:6xp;" value="#{projetBean.d_étude}"
+												pattern="dd-MM-yyyy" mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label class="col-sm-6 control-label"> Date fin étude
+									MOA </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="f_étude" styleClass="form-control col-sm-1 "
+												style="with:6xp;" value="#{projetBean.f_étude}"
+												pattern="dd-MM-yyyy" mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date envoi au prestataire </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="envoiePres"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.envoiePres}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date plannification au prestataire </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="plannificationPres"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.plannificationPres}"
+												pattern="dd-MM-yyyy" mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date début étude prestataire </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="d_étudePres"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.d_étudePres}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date fin etude prestataire </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="f_étudePres"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.f_étudePres}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date début recette </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="d_recette"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.d_recette}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date fin recette </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="f_recette"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.f_recette}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date livraison Prestataire</label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="livraisonPres"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.livraisonPres}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date MEP DA </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="mepDA" styleClass="form-control col-sm-1 "
+												style="with:6xp;" value="#{projetBean.mepDA}"
+												pattern="dd-MM-yyyy" mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date début exp </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="d_exp" styleClass="form-control col-sm-1 "
+												style="with:6xp;" value="#{projetBean.d_exp}"
+												pattern="dd-MM-yyyy" mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date fin exp </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="f_exp" styleClass="form-control col-sm-1 "
+												style="with:6xp;" value="#{projetBean.f_exp}"
+												pattern="dd-MM-yyyy" mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- 	partie 2************************************-->
+
+
+						<div class="col-md-6">
+
+							<div class="input-group">
+								<div class="input-group">
+									<label for="nom" class="col-sm-4 control-label">Dates
+										Réelles</label>
+
+								</div>
+							</div>
+
+							<div class="input-group">
+								<br></br> <label for="user2" class="col-sm-6 control-label">
+									Date début étude MOA Réelle</label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="d_étude_R" mode="popup"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.d_étude_R}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+
+
+
+
+
+
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date fin étude MOA Réelle</label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="f_étude_R"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.f_étude_R}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date envoi au prestataire Réelle </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="envoiePres_R"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.envoiePres_R}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date plannification au prestataire Réelle </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="plannificationPres_R"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.plannificationPres_R}"
+												pattern="dd-MM-yyyy" mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date début étude prestataire Réelle </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="d_étudePres_R"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.d_étudePres_R}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date fin etude prestataire Réelle </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="f_étudePres_R"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.f_étudePres_R}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date début recette Réelle</label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="d_recette_R"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.d_recette_R}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date fin recette Réelle </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="f_recette_R"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.f_recette_R}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date livraison Prestataire Réelle</label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="livraisonPres_R"
+												styleClass="form-control col-sm-1 " style="with:6xp;"
+												value="#{projetBean.livraisonPres_R}" pattern="dd-MM-yyyy"
+												mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date MEP DA Réelle </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="mepDA_R" styleClass="form-control col-sm-1 "
+												style="with:6xp;" value="#{projetBean.mepDA_R}"
+												pattern="dd-MM-yyyy" mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date début exp Réelle </label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="d_exp_R" styleClass="form-control col-sm-1 "
+												style="with:6xp;" value="#{projetBean.d_exp_R}"
+												pattern="dd-MM-yyyy" mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+							<div class="input-group">
+
+								<label for="chefProjet" class="col-sm-6 control-label">
+									Date fin exp Réelle</label>
+								<div class="col-sm-1">
+									<div class="input-group">
+
+
+										<div class="input-prepend input-group demo-margin">
+											<span class="add-on input-group-addon"><i
+												class="glyph-icon icon-calendar"></i></span>
+											<p:calendar id="f_exp_R" styleClass="form-control col-sm-1 "
+												style="with:6xp;" value="#{projetBean.f_exp_R}"
+												pattern="dd-MM-yyyy" mask="true" />
+
+										</div>
+
+
+									</div>
+								</div>
+
+							</div>
+
+
+
+
+						</div>
+
+
+
+
+
+					</div>
+
+
+
+					
+				</div>
+			</div>
+
+
+			<br></br>
+			<br></br>
+
+
+			<div class="ui-grid">
+				<div class="ui-grid-row">
+
+
+					<div class="ui-grid-col-6"></div>
+					<div class="ui-grid-col-12">
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-2">
+								<p:commandButton action="#{projetBean.doCreateProject()}"
+									styleClass=" btn btn-success btn-block" value="Create "
+									update="display" oncomplete="PF('dlg').show()"
+									icon="ui-icon-check" />
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

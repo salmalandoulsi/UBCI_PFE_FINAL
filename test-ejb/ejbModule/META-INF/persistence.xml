@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="test-ejb">
+	
+	        <jta-data-source>java:/banqueDS</jta-data-source>
+	        <class>ProjectPrestataireID</class>
+	        <class>ubci.app.persistence.Application</class>
+	        <class>ubci.app.persistence.Charge_Budget</class>
+	        <class>ubci.app.persistence.Enjeux</class>
+	        <class>ubci.app.persistence.Entité</class>
+	        <class>ubci.app.persistence.HistoriqueProjet</class>
+	        <class>ubci.app.persistence.Parametre</class>
+	        <class>ubci.app.persistence.Prestataire</class>
+	        <class>ubci.app.persistence.Priorité</class>
+	        <class>ubci.app.persistence.Project</class>
+	        <class>ubci.app.persistence.ProjectPrestataire</class>
+	        <class>ubci.app.persistence.ProjectPrestataireID</class>
+	        <class>ubci.app.persistence.ProjectUser</class>
+	        <class>ubci.app.persistence.ProjectUserID</class>
+	        <class>ubci.app.persistence.Reliquat</class>
+	        <class>ubci.app.persistence.Revision_Budget_Prestataire</class>
+	        <class>ubci.app.persistence.Révision_Budget_Projet</class>
+	        <class>ubci.app.persistence.Statut</class>
+	        <class>ubci.app.persistence.TypeP</class>
+	        <class>ubci.app.persistence.Type_DA</class>
+	        <class>ubci.app.persistence.User</class>
+		
+		   
+			
+			
+			<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			
+			<!-- <property name="hibernate.show_sql" value="true"/>-->
+			<!-- <property name="hibernate.format_sql" value="true"/>-->
+			 
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/pages/userCreation.xhtml">
+
+
+	<h:head>
+	
+	
+	<ui:define name="title">Process</ui:define>
+
+		
+
+
+	</h:head>
+	<ui:define name="title2">
+          Consultation Demande
+        </ui:define>
+
+	<ui:define name="form">
+		<h3 class="title-hero">Consultation Demande</h3>
+		
+		<h:form id="form">
+		
+		<p:panelGrid columns="2" layout="grid" styleClass="border-green  ">  
+		          
+    <h:outputText value="#{Modifprojet.id}" /> 
+    <h:outputText value="#{Modifprojet.libélé}" /> 
+    
+ 
+   
+    <h:outputText value="Entité" /> 
+    <p>  dfrtyjkh;</p>
+  
+    <h:outputText value="Chef de Projet" /> 
+    <h:outputText value="chef" />
+    
+      <h:outputText value="Date de cloure" /> 
+    <h:outputText value="Date" /> 
+    
+     <h:outputText value="MOA" /> 
+    <h:outputText value="moa" /> 
+    
+     <h:outputText value="Date Réception " /> 
+    <h:outputText value="Date" /> 
+    
+     <h:outputText value="Description" /> 
+    <h:outputText value="description" /> 
+    
+     <h:outputText value="Sponsor" /> 
+    <h:outputText value="Sponsor" /> 
+    
+     <h:outputText value="Criticité" /> 
+    <h:outputText value="priorité" /> 
+    
+    
+     
+</p:panelGrid>
+							
+					
+				
+						<p:growl id="msgs" showDetail="true" />
+
+						
+
+					</h:form>
+
+			
+		
+
+		 
+		
+	</ui:define>
+</ui:composition>

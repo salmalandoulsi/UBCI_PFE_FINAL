@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/pages/userCreation.xhtml">
+
+
+	<h:head>
+	
+	
+	<ui:define name="title">Process</ui:define>
+
+		
+
+
+	</h:head>
+	<ui:define name="title2">
+           page Processs
+        </ui:define>
+
+	<ui:define name="form">
+		<h3 class="title-hero">Process</h3>
+		
+		
+								
+						
+						<p:tabView>
+				<p:tab title="Etude">
+					<h:form id="form">
+						<p:growl id="msgs" showDetail="true" />
+
+						<h:panelGrid columns="2" cellpadding="5">
+
+							<p:outputLabel for="button" value="date-début Etude" />
+							<p:calendar id="button" value="#{projetBean.d_étude}"
+								mindate="0/0/0" showOn="button" />
+
+
+							<p:outputLabel for="button2" value="date-fin Etude" />
+							<p:calendar id="button2" value="#{projetBean.f_étude}"
+								mindate="350/0/0" showOn="button" />
+
+							<p:outputLabel for="button3" value="date-envoie_Prestataire" />
+							<p:calendar id="button3" value="#{projetBean.f_étude}"
+								mindate="350/0/0" showOn="button" />
+							<p:spacer height="10" />
+
+							<p:separator />
+
+
+							<p:outputLabel for="button4" value="date début étude Prestataire" />
+							<p:calendar id="button4" value="#{projetBean.f_étude}"
+								mindate="350/0/0" showOn="button" />
+
+
+							<p:outputLabel for="button5" value="date fin étude Prestataire" />
+							<p:calendar id="button5" value="#{projetBean.f_étude}"
+								mindate="350/0/0" showOn="button" />
+						</h:panelGrid>
+
+					</h:form>
+
+				</p:tab>
+				<p:tab title="Réalisation">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:outputLabel for="button6" value="date-début Réalisation " />
+						<p:calendar id="button6" value="#{projetBean.d_étude}"
+							mindate="0/0/0" showOn="button" />
+
+
+						<p:outputLabel for="button7" value="date-fin Réalisation" />
+						<p:calendar id="button7" value="#{projetBean.f_étude}"
+							mindate="350/0/0" showOn="button" />
+
+						<p:outputLabel for="button8" value="date livraison Prestataire" />
+						<p:calendar id="button8" value="#{projetBean.f_étude}"
+							mindate="350/0/0" showOn="button" />
+						<p:spacer height="10" />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="UAT">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:outputLabel for="button9" value="date-début Recette" />
+						<p:calendar id="button9" value="#{projetBean.d_étude}"
+							mindate="0/0/0" showOn="button" />
+
+
+						<p:outputLabel for="button10" value="date-fin Recette" />
+						<p:calendar id="button10" value="#{projetBean.f_étude}"
+							mindate="350/0/0" showOn="button" />
+
+
+					</h:panelGrid>
+				</p:tab>
+
+				<p:tab title="Mise en Prod">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:outputLabel for="button11" value="date MEP DA" />
+						<p:calendar id="button11" value="#{projetBean.d_étude}"
+							mindate="0/0/0" showOn="button" />
+
+
+						<p:outputLabel for="button12" value="date début expérimentation " />
+						<p:calendar id="button12" value="#{projetBean.f_étude}"
+							mindate="350/0/0" showOn="button" />
+
+						<p:outputLabel for="button13" value="date fin  expérimentation" />
+						<p:calendar id="button13" value="#{projetBean.f_étude}"
+							mindate="350/0/0" showOn="button" />
+							
+							
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Garentie">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:outputLabel for="button14" value="date début Garentie" />
+						<p:calendar id="button14" value="#{projetBean.d_étude}"
+							mindate="0/0/0" showOn="button" />
+
+	
+						<p:outputLabel for="button15" value="date-fin Garentie	" />
+						<p:calendar id="button15" value="#{projetBean.f_étude}"
+							mindate="350/0/0" showOn="button" />
+					</h:panelGrid>
+				</p:tab>
+			</p:tabView>
+						
+		
+
+		 
+		
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/Mytemplate.xhtml">
+
+
+	<h:head>
+		<title>Edit Enjeux</title>
+	</h:head>
+	<ui:define name="title">
+           page Enjeux
+        </ui:define>
+
+	<ui:define name="implementation">
+
+		<h:form id="form">
+		    <h:panelGrid>
+		
+		 <p:outputLabel for="advanced" value="Advanced:" />
+        <p:selectManyMenu id="advanced" value="#{selectManyView.selectedThemes}" converter="themeConverter"
+                          var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
+            <f:selectItems value="#{selectManyView.themes}" var="theme" itemLabel="#{theme.displayName}" itemValue="#{theme}" />
+ 
+            <p:column>
+                <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
+            </p:column>
+ 
+            <p:column>
+                <h:outputText value="#{t.displayName}" />
+            </p:column>
+        </p:selectManyMenu>
+    </h:panelGrid>
+ 
+    <p:separator />
+ 
+    <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
+    
+     <p:dialog header="Selected Values" modal="true" showEffect="fade" widgetVar="dlg" resizable="false">
+        <p:panelGrid columns="2" id="display" columnClasses="label,output">
+            <h:outputText value="Basic:" />
+            <p:dataList value="#{selectManyView.selectedOptions}" var="option">
+                <h:outputText value="#{option}" />
+            </p:dataList>
+ 
+            <h:outputText value="Advanced:" />
+            <p:dataList value="#{selectManyView.selectedThemes}" var="t">
+                <h:outputText value="#{t}" />
+            </p:dataList>
+        </p:panelGrid>
+    </p:dialog>
+			
+		
+
+		</h:form>
+	</ui:define>
+</ui:composition>

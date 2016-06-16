@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/Mytemplate.xhtml">
+
+
+	<h:head>
+		<title>creation User</title>
+	</h:head>
+	<ui:define name="title">
+           page User
+        </ui:define>
+
+	<ui:define name="implementation">
+
+		<h:form id="form">
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Nom : * " />
+				<p:inputText value="#{userBean.u.nom}" required="true" />
+
+				<h:outputLabel value="Prénom : * " />
+				<p:inputText value="#{userBean.u.prenom}" required="true" />
+
+				<h:outputLabel for="mask" value="date de naissance :" />
+				<p:calendar id="mask" value="#{userBean.u.date_naissance}"
+					pattern="dd-MM-yyyy" mask="true" />
+
+				<p:outputLabel for="sexe" value="Sexe" />
+				<p:selectOneRadio id="sexe" value="#{userBean.u.sexe}">
+					<f:selectItem itemLabel="Male" itemValue="Male" />
+					<f:selectItem itemLabel="Femelle" itemValue="femelle" />
+				</p:selectOneRadio>
+
+
+			</h:panelGrid>
+
+			<p:spacer height="10" />
+
+			<p:separator />
+
+			<p:messages id="messages" showDetail="true" autoUpdate="true" />
+
+			<h:panelGrid columns="2" id="matchGrid" cellpadding="5">
+
+				<h:outputLabel value="login : * " />
+				<p:inputText value="#{userBean.u.login}" required="true" />
+
+				<h:outputLabel value="e-mail : * " />
+				<p:inputText value="#{userBean.u.email}" required="true" />
+
+				<h:outputLabel for="pwd1" value="Password : *" />
+				<p:password id="pwd1" value="#{userBean.u.password}" match="pwd2"
+					label="Password " required="true" />
+
+				<h:outputLabel for="pwd2" value="Confirm Password: *" />
+				<p:password id="pwd2" value="#{userBean.u.password}"
+					label="confirm Password" required="true" />
+			</h:panelGrid>
+
+			<p:commandButton update="matchGrid" value="Save"
+				action="#{userBean.doCreateUser()}"   icon="ui-icon-check"/>
+
+
+
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/pages/userCreation.xhtml">
+
+
+	<h:head>
+		<title>Projects</title>
+	</h:head>
+	<ui:define name="title">
+          Projects
+          
+        </ui:define>
+
+	<ui:define name="form">
+	
+
+		<h:form id="form">
+
+			<p:growl id="msgs" showDetail="true" />
+
+
+			 <p:dataTable  id="cars" var="car" value="#{project.list}" scrollable="true" scrollWidth="100%" scrollHeight="200" frozenColumns=""
+			emptyMessage="No cars found with given criteria"
+				filteredValue="#{project.filteredProjects}" 
+				>
+				<f:facet name="header">
+<h:outputText value="Demandes" style="font-size: 14px"/>
+					
+						<p:commandButton id="toggler" type="button" value="Columns" 
+							 style="float:left;height: 22px;font-size: 11px" icon="ui-icon-calculator" />
+						<p:columnToggler  datasource="cars" trigger="toggler"  />
+
+						
+					
+					</f:facet>
+        <p:column exportable="#{checkboxView.référence}" headerText="Référence DA" width="150" filterBy="#{car.id}" filterMatchMode="contains" >
+            <h:outputText value="#{car.id}" />
+        </p:column>
+        <p:column  exportable="#{checkboxView.entité}" filterBy="#{car.entité}" headerText="Entité"  width="150"
+					filterMatchMode="in">
+					<f:facet name="filter">
+						<p:selectCheckboxMenu label="Entités"
+							onchange="PF('carsTable').filter()" panelStyle="width:125px"
+							scrollHeight="150">
+							<f:selectItems value="#{project.entités}" />
+						</p:selectCheckboxMenu>
+					</f:facet>
+					<h:outputText value="#{car.entité}" />
+				</p:column>
+        <p:column  headerText="Projet"  width="150" filterBy="#{car.libélé}" filterMatchMode="contains">
+            <h:outputText value="#{car.libélé}" />
+        </p:column>
+        <p:column exportable="#{checkboxView.sponsor}" headerText="Sponsor"  width="200" filterBy="#{car.nomSponsor}" filterMatchMode="contains">
+            <h:outputText value="#{car.nomSponsor}" />
+        </p:column>
+        <p:column exportable="#{checkboxView.chefP}" headerText="Chef de Projet" filterBy="#{car.nomChefP}" filterMatchMode="contains" width="200">
+            <h:outputText value="#{car.nomChefP}" />
+        </p:column>
+        
+        <p:column  headerText="Chef de Projet MOA"  width="200" filterBy="#{car.nomMOA}" filterMatchMode="contains">
+            <h:outputText value="#{car.nomMOA}" />
+        </p:column>
+        <p:column  headerText="Priorité"  width="200" filterBy="#{car.p}"
+					filterMatchMode="in">
+					<f:facet name="filter">
+						<p:selectCheckboxMenu label="priorité"
+							onchange="PF('carsTable').filter()" panelStyle="width:155px"
+							scrollHeight="50">
+							<f:selectItems value="#{project.priorité}" />
+						</p:selectCheckboxMenu>
+					</f:facet>
+            <h:outputText value="#{car.p}" />
+        </p:column>
+        <p:column  headerText="Enjeux"  width="200"  filterBy="#{car.e}"
+					filterMatchMode="in">
+					<f:facet name="filter">
+						<p:selectCheckboxMenu label="enjeux"
+							onchange="PF('carsTable').filter()" panelStyle="width:155px"
+							scrollHeight="50">
+							<f:selectItems value="#{project.enjeux}" />
+						</p:selectCheckboxMenu>
+					</f:facet>
+            <h:outputText value="#{car.e}" />
+        </p:column>
+      
+        <p:column  headerText="Reliquat"  width="200"   filterBy="#{car.r}"
+					filterMatchMode="in">
+        <f:facet name="filter">
+						<p:selectCheckboxMenu label="reliquat"
+							onchange="PF('carsTable').filter()" panelStyle="width:155px"
+							scrollHeight="50">
+							<f:selectItems value="#{project.reliquat}" />
+						</p:selectCheckboxMenu>
+					</f:facet>
+            <h:outputText value="#{car.r}" />
+        </p:column>
+        <p:column headerText="Statut"  width="200"   filterBy="#{car.s}"
+					filterMatchMode="in">
+        <f:facet name="filter">
+						<p:selectCheckboxMenu label="statut"
+							onchange="PF('carsTable').filter()" panelStyle="width:155px"
+							scrollHeight="50">
+							<f:selectItems value="#{project.statut}" />
+						</p:selectCheckboxMenu>
+					</f:facet>
+            <h:outputText value="#{car.s}" />
+        </p:column>
+        <p:column headerText="Lancer Métier"  width="200" filterBy="#{car.lancerMetier}"
+					filterMatchMode="contains">
+            <h:outputText value="#{car.lancerMetier}" />
+        </p:column>
+        <p:column headerText="Local/Central"  width="200" filterBy="#{car.lc}"
+					filterMatchMode="contains">
+            <h:outputText value="#{car.lc}" />
+        </p:column>
+        
+      
+       	<p:column filterBy="#{car.da}" headerText="Type DA"  width="150"
+					filterMatchMode="in">
+					<f:facet name="filter">
+						<p:selectCheckboxMenu label="Type DA"
+							onchange="PF('carsTable').filter()" panelStyle="width:125px"
+							scrollHeight="150">
+							<f:selectItems value="#{project.type_da}" />
+						</p:selectCheckboxMenu>
+					</f:facet>
+					<h:outputText value="#{car.da}" />
+				</p:column>
+      
+    </p:dataTable>
+			<h3>Export Page Data Only</h3>
+			 <h:panelGrid columns="3" cellpadding="5">
+			<h:outputLabel for="menu" value="choisir Columns" />
+        <p:selectCheckboxMenu id="menu" value="#{checkboxView.selectedCities}" label="Columns"
+                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+            <f:selectItems value="#{checkboxView.cities}" />
+        </p:selectCheckboxMenu>
+        
+    
+ 
+    
+ 
+							
+
+								<p:commandButton action="#{checkboxView.Recherche()}"
+									styleClass=" btn btn-success btn-block" value="Choisir "
+									icon="ui-icon-check" />
+
+						
+    
+
+			</h:panelGrid>
+			
+			
+			
+    <p:commandLink ajax="false">
+        <p:graphicImage name="/demo/images/excel.png" />
+        <p:dataExporter type="xls" target="cars" fileName="cars" pageOnly="true"/>
+    </p:commandLink>
+ 
+    <h:commandLink ajax="false">
+        <p:graphicImage name="/demo/images/pdf.png" />
+        <p:dataExporter type="pdf" target="cars" fileName="cars" pageOnly="true" />
+        
+        
+        
+    </h:commandLink>
+    
+    
+    
+    
+		</h:form>
+
+
+
+	</ui:define>
+</ui:composition>

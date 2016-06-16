@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="/pages/userCreation.xhtml">
+
+
+	<h:head>
+
+
+		<ui:define name="title">creation User</ui:define>
+
+		<link rel="stylesheet"
+			href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+	</h:head>
+	<ui:define name="title2">
+           Creation Projet        </ui:define>
+
+	<ui:define name="form">
+		<h3 class="title-hero">form</h3>
+
+			<h:form id ="form" class="form-horizontal" role="form">
+
+
+				
+				
+
+
+
+
+
+
+			
+
+			
+				
+		
+			
+				<p:dialog header="Values" modal="true" showEffect="bounce"
+					widgetVar="dlg" resizable="false">
+					
+				</p:dialog>
+				
+		<link rel="stylesheet" type="text/css"
+					href="../assets-minified/widgets/tabs-ui/tabs.css"/>
+				<script type="text/javascript"
+					src="../assets-minified/widgets/tabs-ui/tabs.js"></script>
+				<script type="text/javascript">/* jQuery UI Tabs */
+
+    $(function() {
+        $(".tabs").tabs();
+    });</script>
+			
+			<ul id="myTab" class="nav clearfix nav-tabs">
+				<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+				<li class=""><a href="#profile" data-toggle="tab">Profile</a></li>
+				<li class="dropdown"><a href="#" id="myTabDrop1"
+					class="dropdown-toggle" data-toggle="dropdown">Dropdown <b
+						class="caret"></b></a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+						<li><a href="#dropdown1" tabindex="-1" data-toggle="tab">Submenu
+								link 1</a></li>
+						<li class=""><a href="#dropdown2" tabindex="-1"
+							data-toggle="tab">Submenu link 2</a></li>
+					</ul></li>
+			</ul>
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade active in" id="home">
+					<div class="form-group">
+
+						<label for="enjeux" class="col-sm-2 control-label">Enjeux
+						</label>
+						<div class="col-sm-4">
+							<div class="input-group">
+
+
+								<div class="custom-select ">
+
+									<p:selectOneMenu id="enjeux" value="#{projetBean.en}"
+										effect="fold">
+										<f:selectItem itemLabel="Select enjeux" itemValue="" />
+										<f:selectItems value="#{projetBean.enjeuxSelect}" />
+									</p:selectOneMenu>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+					<div class="form-group">
+						<label for="priorité" class="col-sm-2 control-label">Priorité</label>
+						<div class="col-sm-4">
+							<div class="custom-select">
+
+								<p:selectOneMenu styleClass="custom-select" id="priorité"
+									value="#{projetBean.en2}" effect="fold">
+									<f:selectItem itemLabel="Select priorité" itemValue="" />
+									<f:selectItems value="#{projetBean.prioritéSelect}" />
+								</p:selectOneMenu>
+
+							</div>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label for="statut" class="col-sm-2 control-label">Statut</label>
+						<div class="col-sm-4">
+							<div class="custom-select">
+
+								<p:selectOneMenu id="statut" value="#{projetBean.en4}"
+									effect="fold">
+									<f:selectItem itemLabel="Select statut" itemValue="" />
+									<f:selectItems value="#{projetBean.statutSelect}" />
+								</p:selectOneMenu>
+
+							</div>
+
+						</div>
+
+					</div>
+					<div class="form-group">
+						<label for="reliquat" class="col-sm-2 control-label">Reliquat</label>
+						<div class="col-sm-4">
+							<div class="custom-select">
+
+								<p:selectOneMenu id="reliquat" value="#{projetBean.en3}"
+									effect="fold">
+									<f:selectItem itemLabel="Select reliquat" itemValue="" />
+									<f:selectItems value="#{projetBean.reliquatSelect}" />
+								</p:selectOneMenu>
+
+							</div>
+
+						</div>
+
+					</div>
+					<div class="form-group">
+						<label for="typeDa" class="col-sm-2 control-label">TypeDA</label>
+						<div class="col-sm-4">
+							<div class="input-group">
+								<p:selectOneMenu id="typeDA" value="#{projetBean.en5}"
+									effect="fold">
+									<f:selectItem itemLabel="Select reliquat" itemValue="" />
+									<f:selectItems value="#{projetBean.typeDASelect}" />
+								</p:selectOneMenu>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="profile">
+					<p>Food</p>
+				</div>
+				<div class="tab-pane fade" id="dropdown1">
+					<p>ukiy</p>
+				</div>
+				<div class="tab-pane fade" id="dropdown2">
+					<p>T</p>
+				</div>
+			</div>
+			
+					
+			</h:form>
+	
+
+
+	</ui:define>
+</ui:composition>
