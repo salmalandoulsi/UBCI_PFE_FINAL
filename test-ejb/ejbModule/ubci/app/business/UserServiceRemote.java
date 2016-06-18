@@ -14,5 +14,6 @@ public interface UserServiceRemote {
 	void saveOrUpdateUser(User u);
 	User findUserById(int id);
 	void removeUser(User u);
+	boolean findUserByLoginAndPass(String log,String pass);
 	List<User> findAllUser();
 }

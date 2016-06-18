@@ -6,9 +6,12 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import ubci.app.business.ProjectServiceLocal;
 import ubci.app.business.UserServiceLocal;
@@ -17,7 +20,7 @@ import ubci.app.persistence.User;
 
 
 @ManagedBean(name="userBean")
-@ViewScoped
+@SessionScoped
 public class UserBean implements Serializable{
 
 	
@@ -30,6 +33,10 @@ public class UserBean implements Serializable{
 	private User 		 u = new User() ;
 	private String pass="";
 	
+	private String pwd;
+	private String msg;
+	private String user;
+
 	
 	
 	
@@ -71,5 +78,31 @@ public class UserBean implements Serializable{
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	
+	//validate login
+	public String validateUsernamePassword() {
+		boolean valid = userService.findUserByLoginAndPass(user, pwd);
+		if (valid) {
+			HttpSession session = SessionUtils.getSession();
+			session.setAttribute("username", user);
+			return "admin";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(
+					null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN,
+							"Incorrect Username and Passowrd",
+							"Please enter correct username and Password"));
+			return "login";
+		}
+	}
+
+	//logout event, invalidate session
+	public String logout() {
+		HttpSession session = SessionUtils.getSession();
+		session.invalidate();
+		return "login";
+	}
+	
+	
 	
 }

@@ -60,7 +60,7 @@ public class UserService implements UserServiceLocal,UserServiceRemote {
 
 		List<User> a =query.getResultList();
 		
-
+		
 	
 		System.out.println("\n******service********");
 		for( int i=0; i<a.size();i++)
@@ -87,6 +87,24 @@ public class UserService implements UserServiceLocal,UserServiceRemote {
 //      System.out.println(e.nextElement());
 //   
 		return a;
+	}
+
+	@Override
+	public boolean findUserByLoginAndPass(String log, String pass) {
+		
+
+		String jpql = "select q from User q where login = '"+log+"' and password = '"+pass+"' ";
+
+		Query query = em.createQuery(jpql);
+
+		List<User> a =query.getResultList();
+		
+		if(a!= null || a.size()>=0){
+			return true;
+		}else{
+			return false;
+		}
+	
 	}
 
 	
