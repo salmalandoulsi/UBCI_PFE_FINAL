@@ -25,28 +25,26 @@ public class Project implements Serializable {
 	private HistoriqueProjet historiqueP;
 	private String libélé;
 	private String macrochiffrage;
-	private float budget_int=0;
-	private float budget_supp=0;
-	private float budget_rev=0;
-	private int charge_prev=0;
-	private int charge_supp=0;
-	private int charge_Total=0;
+	private float budget_int = 0;
+	private float budget_supp = 0;
+	private float budget_rev = 0;
+	private int charge_prev = 0;
+	private int charge_supp = 0;
+	private int charge_Total = 0;
 
-
-	
-	private int spons=0;
-	private int chefP=0;
-	private int MOA=0;
-	private int app=0;
-	private int entite=0;
+	private int spons = 0;
+	private int chefP = 0;
+	private int MOA = 0;
+	private int app = 0;
+	private int entite = 0;
 	private int enjeux = 0;
 	private int priorité = 0;
 	private int statut = 0;
 	private int typeDA = 0;
-	private int reliquat= 0;
-	private int iduser=0;
-	private String lancerMetier="";
-	private String LC="";//local/central
+	private int reliquat = 0;
+	private int iduser = 0;
+	private String lancerMetier = "";
+	private String LC = "";// local/central
 	private String descriptionProjet;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -67,32 +65,30 @@ public class Project implements Serializable {
 	private Date f_recette;
 
 	@Temporal(TemporalType.TIMESTAMP)
-
 	private Date d_cloture = new Date();
 
 	@Temporal(TemporalType.TIMESTAMP)
-
 	private Date envoiePres = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-
 	private Date plannificationPres = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-
 	private Date d_étudePres = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-
 	private Date f_étudePres = new Date();
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date mepDA = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-
 	private Date d_exp = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-
 	private Date f_exp = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-
+	private Date d_garentie = new Date();
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date f_garentie = new Date();
+	
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date d_cloture_R = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date d_étude_R = new Date();
@@ -101,80 +97,78 @@ public class Project implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date envoiePres_R = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-private Date plannificationPres_R = new Date();
+	private Date plannificationPres_R = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-private Date d_étudePres_R = new Date();
+	private Date d_étudePres_R = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-private Date f_étudePres_R = new Date();
+	private Date f_étudePres_R = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-private Date d_recette_R = new Date();
+	private Date d_recette_R = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-private Date f_recette_R = new Date();
+	private Date f_recette_R = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-private Date livraisonPres_R = new Date();
+	private Date livraisonPres_R = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-private Date mepDA_R = new Date();
+	private Date mepDA_R = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-private Date d_exp_R = new Date();
+	private Date d_exp_R = new Date();
 	@Temporal(TemporalType.TIMESTAMP)
-private Date f_exp_R = new Date();
-	@OneToMany(mappedBy="project",cascade=CascadeType.PERSIST)
+	private Date f_exp_R = new Date();
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date d_réalisation_R;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date f_réalisation_R;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date d_garentie_R = new Date();
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date f_garentie_R = new Date();
+	
+	
+	@OneToMany(mappedBy = "project", cascade = CascadeType.PERSIST)
 	private List<ProjectUser> projectUser;
 
-	@OneToMany(mappedBy="proj",cascade=CascadeType.PERSIST)
+	@OneToMany(mappedBy = "proj", cascade = CascadeType.PERSIST)
 	private List<ProjectPrestataire> projectPrestataire;
-	
-	@OneToOne(fetch = FetchType.LAZY,mappedBy="projet", cascade = CascadeType.ALL)
+
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "projet", cascade = CascadeType.ALL)
 	private Révision_Budget_Projet budgetProjet;
 
-	
-	
-	
-	
-	
-	
-	
 	public Project() {
 		super();
 
 	}
 
-	
 	public String getDescriptionProjet() {
 		return descriptionProjet;
 	}
-
 
 	public void setDescriptionProjet(String descriptionProjet) {
 		this.descriptionProjet = descriptionProjet;
 	}
 
-
 	public List<ProjectPrestataire> getProjectPrestataire() {
 		return projectPrestataire;
 	}
 
-
-	public void setProjectPrestataire(List<ProjectPrestataire> projectPrestataire) {
+	public void setProjectPrestataire(
+			List<ProjectPrestataire> projectPrestataire) {
 		this.projectPrestataire = projectPrestataire;
 	}
-
 
 	public Révision_Budget_Projet getBudgetProjet() {
 		return budgetProjet;
 	}
 
-
 	public void setBudgetProjet(Révision_Budget_Projet budgetProjet) {
 		this.budgetProjet = budgetProjet;
 	}
-
 
 	public Project(String id) {
 		super();
 		this.idProject = id;
 
 	}
+
 	public Project(String id, String libélé) {
 		super();
 		this.idProject = id;
@@ -183,10 +177,10 @@ private Date f_exp_R = new Date();
 	}
 
 	public Project(String id, String libélé, int sponsor, int chef_projet,
-			int chef_MOA, int enjeux, int priorité, int statut,
-			int typeDA, Date d_étude, Date f_étude, Date d_réalisation,
-			Date f_réalisation, Date livraison_prestataire, Date d_recette,
-			Date f_recette, Date d_garentie, Date f_garentie) {
+			int chef_MOA, int enjeux, int priorité, int statut, int typeDA,
+			Date d_étude, Date f_étude, Date d_réalisation, Date f_réalisation,
+			Date livraison_prestataire, Date d_recette, Date f_recette,
+			Date d_garentie, Date f_garentie) {
 		super();
 		this.idProject = id;
 		this.libélé = libélé;
@@ -204,14 +198,11 @@ private Date f_exp_R = new Date();
 		this.livraison_prestataire = livraison_prestataire;
 		this.d_recette = d_recette;
 		this.f_recette = f_recette;
-		
+
 	}
 
-	
-	
-	
-	//getters &Setters
-	
+	// getters &Setters
+
 	public String getId() {
 		return idProject;
 	}
@@ -221,9 +212,6 @@ private Date f_exp_R = new Date();
 		this.idProject = id;
 	}
 
-	
-
-	
 	public int getIduser() {
 		return iduser;
 	}
@@ -271,7 +259,6 @@ private Date f_exp_R = new Date();
 	public void setTypeDA(int typeDA) {
 		this.typeDA = typeDA;
 	}
-	
 
 	public int getReliquat() {
 		return reliquat;
@@ -280,14 +267,6 @@ private Date f_exp_R = new Date();
 	public void setReliquat(int reliquat) {
 		this.reliquat = reliquat;
 	}
-
-
-
-	
-
-
-
-	
 
 	public Date getD_étude() {
 		return d_étude;
@@ -361,18 +340,11 @@ private Date f_exp_R = new Date();
 		this.f_recette = f_recette;
 	}
 
-
-	
-
 	/*
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-	*/
+	 * public List<User> getUsers() { return users; }
+	 * 
+	 * public void setUsers(List<User> users) { this.users = users; }
+	 */
 
 	public Date getD_cloture() {
 		return d_cloture;
@@ -558,9 +530,6 @@ private Date f_exp_R = new Date();
 		this.d_réceptionDA = d_réceptionDA;
 	}
 
-	
-	
-	
 	public void main(String[] args) {
 		Date date = new Date();
 
@@ -612,8 +581,6 @@ private Date f_exp_R = new Date();
 		}
 
 	}
-
-	
 
 	public int getApp() {
 		return app;
@@ -726,6 +693,57 @@ private Date f_exp_R = new Date();
 	public void setHistoriqueP(HistoriqueProjet historiqueP) {
 		this.historiqueP = historiqueP;
 	}
+
+	public Date getD_garentie() {
+		return d_garentie;
+	}
+
+	public void setD_garentie(Date d_garentie) {
+		this.d_garentie = d_garentie;
+	}
+
+	public Date getF_garentie() {
+		return f_garentie;
+	}
+
+	public void setF_garentie(Date f_garentie) {
+		this.f_garentie = f_garentie;
+	}
+
+	public Date getD_garentie_R() {
+		return d_garentie_R;
+	}
+
+	public void setD_garentie_R(Date d_garentie_R) {
+		this.d_garentie_R = d_garentie_R;
+	}
+
+	public Date getF_garentie_R() {
+		return f_garentie_R;
+	}
+
+	public void setF_garentie_R(Date f_garentie_R) {
+		this.f_garentie_R = f_garentie_R;
+	}
+
+	public Date getD_réalisation_R() {
+		return d_réalisation_R;
+	}
+
+	public void setD_réalisation_R(Date d_réalisation_R) {
+		this.d_réalisation_R = d_réalisation_R;
+	}
+
+	public Date getF_réalisation_R() {
+		return f_réalisation_R;
+	}
+
+	public void setF_réalisation_R(Date f_réalisation_R) {
+		this.f_réalisation_R = f_réalisation_R;
+	}
+
+	
+	
 	
 	
 }

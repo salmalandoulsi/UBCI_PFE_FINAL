@@ -53,12 +53,10 @@ public class CreateProjetBean implements Serializable {
 	private PrestataireServiceLocal prestService;
 	@EJB
 	private HistoriqueProjectLocal historiqueService;
-	
 
 	@EJB
 	private BudgetServiceLocal budgetService;
 
-	
 	public String userName;
 	public String userLastName;
 	public String loginChef;
@@ -69,7 +67,7 @@ public class CreateProjetBean implements Serializable {
 	public String macrochiffrage;
 
 	private List<Integer> prest = new ArrayList<Integer>();
-	private HistoriqueProjet historique= new HistoriqueProjet();
+	private HistoriqueProjet historique = new HistoriqueProjet();
 
 	public String en, en2, en3, en4, en5;
 
@@ -85,8 +83,6 @@ public class CreateProjetBean implements Serializable {
 	private List<Application> applications = new ArrayList<Application>();
 	private List<PrestataireBean> PrestataireBeans = new ArrayList<PrestataireBean>();
 
-
-	
 	private List<PrestataireBean> SelectedPrestataires1 = new ArrayList<PrestataireBean>();
 	private List<Prestataire> SelectedPrestataires = new ArrayList<Prestataire>();
 	private List<SelectItem> usersSelect = new ArrayList<SelectItem>();
@@ -101,20 +97,19 @@ public class CreateProjetBean implements Serializable {
 	private Project p = new Project();
 
 	private String libélé = "";
-	private String descriptionProjet="";
+	private String descriptionProjet = "";
 
 	private static final long serialVersionUID = -9040274036031665311L;
 
-	private String lancerMetier="";
-	private String lc="";
-	private float budget_int=0;
-	private float budget_supp=0;
-	private float budget_rev=0;
-	private int charge_prev=0;
-	private int charge_supp=0;
-	private int charge_Total=0;
-	
-	
+	private String lancerMetier = "";
+	private String lc = "";
+	private float budget_int = 0;
+	private float budget_supp = 0;
+	private float budget_rev = 0;
+	private int charge_prev = 0;
+	private int charge_supp = 0;
+	private int charge_Total = 0;
+
 	private Date d_receptionDA = new Date();
 	private Date d_cloture = new Date();
 
@@ -126,18 +121,16 @@ public class CreateProjetBean implements Serializable {
 	private Date f_étudePres = new Date();
 	private Date d_recette = new Date();
 	private Date f_recette = new Date();
-	private Date d_réalisation= new Date();
-	private Date f_réalisation= new Date();
+	private Date d_réalisation = new Date();
+	private Date f_réalisation = new Date();
 
 	private Date livraisonPres = new Date();
 	private Date mepDA = new Date();
 	private Date d_exp = new Date();
 	private Date f_exp = new Date();
-	private Date d_garentie= new Date();
-	private Date f_garentie= new Date();
+	private Date d_garentie = new Date();
+	private Date f_garentie = new Date();
 
-
-	
 	private Date d_cloture_R = new Date();
 
 	private Date d_étude_R = new Date();
@@ -148,87 +141,15 @@ public class CreateProjetBean implements Serializable {
 	private Date f_étudePres_R = new Date();
 	private Date d_recette_R = new Date();
 	private Date f_recette_R = new Date();
-	private Date d_réalisation_R= new Date();
-	private Date f_réalisation_R= new Date();
+	private Date d_réalisation_R = new Date();
+	private Date f_réalisation_R = new Date();
 
 	private Date livraisonPres_R = new Date();
 	private Date mepDA_R = new Date();
 	private Date d_exp_R = new Date();
 	private Date f_exp_R = new Date();
-	private Date d_garentie_R= new Date();
-	private Date f_garentie_R= new Date();
-
-
-
-
-
-
-
-
-
-	public Date getD_réalisation() {
-		return d_réalisation;
-	}
-
-	public void setD_réalisation(Date d_réalisation) {
-		this.d_réalisation = d_réalisation;
-	}
-
-	public Date getF_réalisation() {
-		return f_réalisation;
-	}
-
-	public void setF_réalisation(Date f_réalisation) {
-		this.f_réalisation = f_réalisation;
-	}
-
-	public Date getD_garentie() {
-		return d_garentie;
-	}
-
-	public void setD_garentie(Date d_garentie) {
-		this.d_garentie = d_garentie;
-	}
-
-	public Date getF_garentie() {
-		return f_garentie;
-	}
-
-	public void setF_garentie(Date f_garentie) {
-		this.f_garentie = f_garentie;
-	}
-
-	public Date getD_réalisation_R() {
-		return d_réalisation_R;
-	}
-
-	public void setD_réalisation_R(Date d_réalisation_R) {
-		this.d_réalisation_R = d_réalisation_R;
-	}
-
-	public Date getF_réalisation_R() {
-		return f_réalisation_R;
-	}
-
-	public void setF_réalisation_R(Date f_réalisation_R) {
-		this.f_réalisation_R = f_réalisation_R;
-	}
-
-	public Date getD_garentie_R() {
-		return d_garentie_R;
-	}
-
-	public void setD_garentie_R(Date d_garentie_R) {
-		this.d_garentie_R = d_garentie_R;
-	}
-
-	public Date getF_garentie_R() {
-		return f_garentie_R;
-	}
-
-	public void setF_garentie_R(Date f_garentie_R) {
-		this.f_garentie_R = f_garentie_R;
-	}
+	private Date d_garentie_R = new Date();
+	private Date f_garentie_R = new Date();
 
 	public CreateProjetBean() {
 		super();
@@ -236,9 +157,9 @@ public class CreateProjetBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		entites=attributService.findAllEntité();
-		applications= attributService.findAllApplication();
-		//projects = projService.findAllProject();
+		entites = attributService.findAllEntité();
+		applications = attributService.findAllApplication();
+		// projects = projService.findAllProject();
 		users = userService.findAllUser();
 		enjeux = attributService.findAllEnjeux();
 		priorité = attributService.findAllPriorité();
@@ -246,35 +167,35 @@ public class CreateProjetBean implements Serializable {
 		reliquat = attributService.findAllReliquat();
 		type_da = attributService.findAllType_DA();
 		prestataires = prestService.findAllPrestataire();
-		
-		Project p= new Project();
+
+		Project p = new Project();
 		p.setId("160001");
-		
+
 		Charge_Budget charge = new Charge_Budget();
 		charge.setIdCharge(1);
 		charge.setJh(50);
 		charge.setTnd(100);
 		Révision_Budget_Projet budgetProjet = new Révision_Budget_Projet();
-		Revision_Budget_Prestataire budgetPrestataire= new Revision_Budget_Prestataire();
+		Revision_Budget_Prestataire budgetPrestataire = new Revision_Budget_Prestataire();
 
 		budgetProjet.setBudget_final(12);
 		budgetProjet.setBudget_initial(10);
 		budgetProjet.setProjet(p);
-//		
-//		
-//	
+		//
+		//
+		//
 		budgetPrestataire.setCharge(charge);
 		budgetPrestataire.setId_prestataire(1);
-	
+
 		budgetPrestataire.setMotif("dftgyhujikl");
 		budgetPrestataire.setRévision_projet(budgetProjet);
-		//budgetService.createRevision_Budget_Prestataire(budgetPrestataire);
-		budgetService.createRévision_Budget_Projet(budgetProjet);
+		// budgetService.createRevision_Budget_Prestataire(budgetPrestataire);
+		// budgetService.createRévision_Budget_Projet(budgetProjet);
 		System.out.println("Done");
-		
-		for (int i=0 ; i<prestataires.size();i++)
-		{PrestataireBeans.add(new PrestataireBean(prestataires.get(i), ""));
-			
+
+		for (int i = 0; i < prestataires.size(); i++) {
+			PrestataireBeans.add(new PrestataireBean(prestataires.get(i), ""));
+
 		}
 
 		for (int i = 0; i < reliquat.size(); i++) {
@@ -285,8 +206,8 @@ public class CreateProjetBean implements Serializable {
 		}
 
 		for (int i = 0; i < applications.size(); i++) {
-			SelectItem I6 = new SelectItem(applications.get(i).getLibélé(), applications
-					.get(i).getLibélé());
+			SelectItem I6 = new SelectItem(applications.get(i).getLibélé(),
+					applications.get(i).getLibélé());
 			applicationSelect.add(I6);
 		}
 		for (int i = 0; i < entites.size(); i++) {
@@ -340,20 +261,62 @@ public class CreateProjetBean implements Serializable {
 		p.setId(id);
 		// p.setLibélé("helloAgain");
 
+		// *****ajout dates ****
+		p.setD_réceptionDA(d_receptionDA);
+		p.setD_cloture(d_cloture);
+		p.setD_étude(d_étude);
+		p.setF_étude(f_étude);
+		p.setEnvoiePres(envoiePres);
+		p.setPlannificationPres(plannificationPres);
+		p.setD_étudePres(d_étudePres);
+		p.setF_étudePres(f_étudePres);
+		p.setD_recette(d_recette);
+		p.setF_recette(f_recette);
+		p.setD_réalisation(d_réalisation);
+		p.setF_réalisation(f_réalisation);
+
+		p.setLivraison_prestataire(livraisonPres);
+		p.setMepDA(mepDA);
+		p.setD_exp(d_exp);
+		p.setF_exp(f_exp);
+		p.setD_garentie(d_garentie);
+		p.setF_garentie(f_garentie);
+
+		p.setD_cloture_R(d_cloture_R);
+		p.setD_étude_R(d_étude_R);
+		p.setF_étude_R(f_étude_R);
+		p.setEnvoiePres_R(envoiePres_R);
+		p.setPlannificationPres_R(plannificationPres_R);
+		p.setD_étudePres_R(d_étudePres_R);
+		p.setF_étudePres_R(f_étudePres_R);
+		p.setD_recette_R(d_recette_R);
+		p.setF_recette_R(f_recette_R);
+		p.setD_réalisation_R(d_réalisation_R);
+		p.setF_réalisation_R(f_réalisation_R);
+
+		p.setLivraison_prestataire(livraisonPres_R);
+		p.setMepDA_R(mepDA_R);
+		p.setD_exp_R(d_exp_R);
+		p.setF_exp_R(f_exp_R);
+		p.setD_garentie_R(d_garentie_R);
+		p.setF_garentie_R(f_garentie_R);
+
+		// *********fin dates*****
+
 		int idEnjeux = 0;
 		int idPriorite = 0;
 		int idReliquat = 0;
 		int idStatut = 0;
 		int idTypeDa = 0;
 		int idChefP = 0;
-		int idSponsor=0;
-		int idMOA=0;
-		int idEntité=0;
-		int idApp=0;
+		int idSponsor = 0;
+		int idMOA = 0;
+		int idEntité = 0;
+		int idApp = 0;
 		System.out.printf("**** initialisation \n");
 
-		idEntité= searchTheIdEntité(entité, entites);
-		idApp= searchTheIdApplication(app, applications);
+		idEntité = searchTheIdEntité(entité, entites);
+		idApp = searchTheIdApplication(app, applications);
 		idEnjeux = searchTheIdEnjeux(en, enjeux);
 		idPriorite = searchTheIdPriorite(en2, priorité);
 		idReliquat = searchTheIdReliquat(en3, reliquat);
@@ -392,18 +355,17 @@ public class CreateProjetBean implements Serializable {
 		p.setDescription(descriptionProjet);
 
 		projService.createProject(p);
-	
-		
-//		System.out.println("****creation hiqtorique********");
-//		historique.setId(p.getId());
-//		System.out.println("id ="+historique.getId());
-//		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//		Date date = new Date();
-//		historique.setDate(dateFormat.format(date));
-//		historique.setHdescription("Creation du projet");
-//		historique.setId(null);
-//		historiqueService.createHistorique(historique);
-//		System.out.println("****fin historique********");
+
+		// System.out.println("****creation hiqtorique********");
+		// historique.setId(p.getId());
+		// System.out.println("id ="+historique.getId());
+		// DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		// Date date = new Date();
+		// historique.setDate(dateFormat.format(date));
+		// historique.setHdescription("Creation du projet");
+		// historique.setId(null);
+		// historiqueService.createHistorique(historique);
+		// System.out.println("****fin historique********");
 		System.out.println("****début prestataire********");
 
 		System.out.println("****id=" + p.getId() + "********");
@@ -411,9 +373,9 @@ public class CreateProjetBean implements Serializable {
 		for (int i = 0; i < SelectedPrestataires1.size(); i++) {
 			System.out.println("****boucle ********");
 			System.out.println(SelectedPrestataires1.get(i).getP().getId());
-			projService.createProjetPrestataire(p.getId(), SelectedPrestataires1
-					.get(i).getP().getId(),SelectedPrestataires1
-					.get(i).getRéférence());
+			projService.createProjetPrestataire(p.getId(),
+					SelectedPrestataires1.get(i).getP().getId(),
+					SelectedPrestataires1.get(i).getRéférence());
 			System.out.println(SelectedPrestataires1.get(i).getP().getId());
 		}
 
@@ -530,20 +492,22 @@ public class CreateProjetBean implements Serializable {
 
 		return val;
 	}
-	//enité
-		public int searchTheIdEntité(String lib, List<Entité> ar) {
-			int val = 0;
-			for (int i = 0; i < ar.size(); i++) {
 
-				if ((ar.get(i)).getLibélé().equals(lib)) {
-					val = entites.get(i).getId();
-				}
+	// enité
+	public int searchTheIdEntité(String lib, List<Entité> ar) {
+		int val = 0;
+		for (int i = 0; i < ar.size(); i++) {
+
+			if ((ar.get(i)).getLibélé().equals(lib)) {
+				val = entites.get(i).getId();
 			}
-			System.out.printf("Entité id " + val + "");
-
-			return val;
 		}
-	//applicatiion
+		System.out.printf("Entité id " + val + "");
+
+		return val;
+	}
+
+	// applicatiion
 	public int searchTheIdApplication(String lib, List<Application> ar) {
 		int val = 0;
 		for (int i = 0; i < ar.size(); i++) {
@@ -556,6 +520,7 @@ public class CreateProjetBean implements Serializable {
 
 		return val;
 	}
+
 	// Enjeux
 	public int searchTheIdEnjeux(String lib, List<Enjeux> ar) {
 		int val = 0;
@@ -626,65 +591,6 @@ public class CreateProjetBean implements Serializable {
 		return val;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	// getters & Setters
 
 	public String getEn3() {
@@ -1269,7 +1175,8 @@ public class CreateProjetBean implements Serializable {
 		return SelectedPrestataires1;
 	}
 
-	public void setSelectedPrestataires1(List<PrestataireBean> selectedPrestataires1) {
+	public void setSelectedPrestataires1(
+			List<PrestataireBean> selectedPrestataires1) {
 		SelectedPrestataires1 = selectedPrestataires1;
 	}
 
@@ -1281,5 +1188,67 @@ public class CreateProjetBean implements Serializable {
 		PrestataireBeans = prestataireBeans;
 	}
 
-	
+	public Date getD_réalisation() {
+		return d_réalisation;
+	}
+
+	public void setD_réalisation(Date d_réalisation) {
+		this.d_réalisation = d_réalisation;
+	}
+
+	public Date getF_réalisation() {
+		return f_réalisation;
+	}
+
+	public void setF_réalisation(Date f_réalisation) {
+		this.f_réalisation = f_réalisation;
+	}
+
+	public Date getD_garentie() {
+		return d_garentie;
+	}
+
+	public void setD_garentie(Date d_garentie) {
+		this.d_garentie = d_garentie;
+	}
+
+	public Date getF_garentie() {
+		return f_garentie;
+	}
+
+	public void setF_garentie(Date f_garentie) {
+		this.f_garentie = f_garentie;
+	}
+
+	public Date getD_réalisation_R() {
+		return d_réalisation_R;
+	}
+
+	public void setD_réalisation_R(Date d_réalisation_R) {
+		this.d_réalisation_R = d_réalisation_R;
+	}
+
+	public Date getF_réalisation_R() {
+		return f_réalisation_R;
+	}
+
+	public void setF_réalisation_R(Date f_réalisation_R) {
+		this.f_réalisation_R = f_réalisation_R;
+	}
+
+	public Date getD_garentie_R() {
+		return d_garentie_R;
+	}
+
+	public void setD_garentie_R(Date d_garentie_R) {
+		this.d_garentie_R = d_garentie_R;
+	}
+
+	public Date getF_garentie_R() {
+		return f_garentie_R;
+	}
+
+	public void setF_garentie_R(Date f_garentie_R) {
+		this.f_garentie_R = f_garentie_R;
+	}
 }

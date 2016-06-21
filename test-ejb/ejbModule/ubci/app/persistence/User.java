@@ -35,6 +35,7 @@ public class User implements Serializable{
 	private String photo; 
 	private String nom;
 	private String prenom;
+	private String role;
 	private String sexe; 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date_naissance; 
@@ -107,6 +108,14 @@ public class User implements Serializable{
 
 	
 	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public int getId() {
 		return idUser;
 	}
